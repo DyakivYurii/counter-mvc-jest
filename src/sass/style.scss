@@ -1,0 +1,10 @@
+// // Global options
+@import 'variables';
+@import 'mixins';
+@import 'normalize.css';
+@import 'global-options';
+@import 'visual-hidden';
+
+// Header section
+@import 'app/app';
+@import 'counter/counter';

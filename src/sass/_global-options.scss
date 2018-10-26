@@ -1,0 +1,21 @@
+body {
+    min-width: 320px;
+    font-family: 'Roboto', sans-serif;
+    font-style: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    text-decoration: none;
+    background-color: $main-baground-color;
+    color: $main-text-color;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-shrink: 1;
+    justify-content: space-around;
+}
