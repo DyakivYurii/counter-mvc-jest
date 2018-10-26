@@ -3,6 +3,10 @@ export default class Model {
         this._state = Object.assign({}, state);
     }
 
+    get initialState() {
+        return this._state;
+    }
+
     set _addClick(value) {
         this._state.allClick += value;
     }

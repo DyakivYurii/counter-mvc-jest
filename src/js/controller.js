@@ -4,6 +4,7 @@ export default class Controller {
         this.view = view; 
         this.eventEmiter = eventEmiter;
 
+        this.view.initialization(this.model.initialState);
         eventEmiter.on(`add`, this.addNumber.bind(this));
         eventEmiter.on(`subtract`, this.subtractNumber.bind(this));
     }

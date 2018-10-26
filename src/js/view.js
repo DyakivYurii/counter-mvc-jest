@@ -1,18 +1,16 @@
-import { initialState } from './data';
-
 export default class View {
     constructor( selector, eventEmiter, clickValue) {
-        
         this.appContainer = document.querySelector(selector);
         this.eventEmiter = eventEmiter;
+        this.clickValue = clickValue;
+    }
 
-        this.initialization();
-
+    bindButtons() {
         this.addButton = document.querySelector(`.counter__button--add`);
         this.subtractButton = document.querySelector(`.counter__button--subtract`);
 
-        this.addButton.addEventListener(`click`, this.addNumber.bind(this, clickValue));
-        this.subtractButton.addEventListener(`click`, this.subtractNumber.bind(this, clickValue));
+        this.addButton.addEventListener(`click`, this.addNumber.bind(this, this.clickValue));
+        this.subtractButton.addEventListener(`click`, this.subtractNumber.bind(this, this.clickValue));
     }
 
     addNumber( clickValue ) {
@@ -23,15 +21,15 @@ export default class View {
         this.eventEmiter.emit(`subtract`, clickValue);
     }
 
-    initialization( item ) {
+    initialization( state ) {
         this.appContainer.innerHTML = `
             <section class="counter">
                 <h1 class="visual-hidden">This is app for count user click</h1>
                 <header class="counter__header">
-                    <p class="counter__sumary-click">*You have clicked <span class="counter__span">${initialState.allClick}</span> times</p>
+                    <p class="counter__sumary-click">*You have clicked <span class="counter__span">${state.allClick}</span> times</p>
                 </header>
                 <div class="flex-container">
-                    <h2 class="counter__sum">${initialState.currentSum}</h2>
+                    <h2 class="counter__sum">${state.currentSum}</h2>
                 </div>
                 <div class="flex-container">
                     <p class="counter__description">This number show you current sum</p>
@@ -39,6 +37,7 @@ export default class View {
                     <button class="counter__button counter__button--subtract" type="button">-</button>
                 </div>
             </section>`;
+        this.bindButtons();
     }
 
     renderCounterSum( value ) {
