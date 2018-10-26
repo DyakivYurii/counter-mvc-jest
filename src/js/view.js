@@ -1,3 +1,9 @@
+/**
+ * @constructor
+ * @param {String} selector - where must be markUp
+ * @param {Object} eventEmiter - for creating event system
+ * @param {Number} clickValue - how much equal a user click
+ */
 export default class View {
     constructor( selector, eventEmiter, clickValue) {
         this.appContainer = document.querySelector(selector);
@@ -5,7 +11,10 @@ export default class View {
         this.clickValue = clickValue;
     }
 
-    bindButtons() {
+    /**
+     * Bind buttons with some actions
+     */
+    _bindButtons() {
         this.addButton = document.querySelector(`.counter__button--add`);
         this.subtractButton = document.querySelector(`.counter__button--subtract`);
 
@@ -13,14 +22,26 @@ export default class View {
         this.subtractButton.addEventListener(`click`, this.subtractNumber.bind(this, this.clickValue));
     }
 
+    /**
+     * Return event
+     * @param {Number} clickValue - user click 
+     */
     addNumber( clickValue ) {
         this.eventEmiter.emit(`add`, clickValue);
     }
 
+     /**
+     * Return event
+     * @param {Number} clickValue - user click 
+     */
     subtractNumber( clickValue ) {
         this.eventEmiter.emit(`subtract`, clickValue);
     }
 
+    /**
+     * Return markUp
+     * @param {Object} state - initial state
+     */
     initialization( state ) {
         this.appContainer.innerHTML = `
             <section class="counter">
@@ -37,14 +58,22 @@ export default class View {
                     <button class="counter__button counter__button--subtract" type="button">-</button>
                 </div>
             </section>`;
-        this.bindButtons();
+        this._bindButtons();
     }
 
+    /**
+     * 
+     * @param {Number} value - get counter sum
+     */
     renderCounterSum( value ) {
         const container = document.querySelector(`.counter__span`);
         container.textContent = value;
     }
 
+    /**
+     * 
+     * @param {Number} value get current sum
+     */
     renderCurrentSum( value ) {
         const container = document.querySelector(`.counter__sum`);
         container.textContent = value;
