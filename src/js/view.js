@@ -72,7 +72,7 @@ export default class View {
 
     /**
      * 
-     * @param {Number} value get current sum
+     * @param {Number} value get currents sum
      */
     renderCurrentSum( value ) {
         const container = document.querySelector(`.counter__sum`);

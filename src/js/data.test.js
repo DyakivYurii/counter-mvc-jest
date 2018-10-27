@@ -10,7 +10,11 @@ describe(`InitialState`, () => {
             allClick: 0
         });
     });
-    test(`Not change`, () => {
-        
-    })
+    test.skip(`Not change`, () => {
+        const freezeState = Object.assign({}, initialState);
+        console.log(freezeState);
+        const forChanging = initialState;
+        forChanging.testProperty = `test value`;
+        expect(initialState).toEqual(freezeState);
+    });
 });

@@ -10,7 +10,7 @@ export default class Controller {
         this.view = view; 
         this.eventEmiter = eventEmiter;
 
-        this.view.initialization(this.model.initialState);
+        this.view.initialization(this.model.getInitialState);
         eventEmiter.on(`add`, this.addNumber.bind(this));
         eventEmiter.on(`subtract`, this.subtractNumber.bind(this));
     }

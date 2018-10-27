@@ -10,7 +10,7 @@ export default class Model {
     /**
      * Return initial pragram state
      */
-    get initialState() {
+    get getInitialState() {
         return this._state;
     }
 
