@@ -46,11 +46,11 @@ describe(`Model class`, () => {
                 currentSum: 0,
                 allClick: 0
             });
-            model._addClick = 1;
+            model._addClick();
             expect(model._state.allClick).toBe(1);
 
-            model._state.allClick = 0;
-            model._addClick = 3;
+            model._state.allClick = 2;
+            model._addClick();
             expect(model._state.allClick).toBe(3);
         });
         test(`addCount should set new value`, () => {
@@ -64,7 +64,48 @@ describe(`Model class`, () => {
                 currentSum: 1,
                 allClick: 1
             });
+
             model._state = state;
+            model.addCount = 3;
+            expect(model._state).toEqual({
+                currentSum: 3,
+                allClick: 1
+            });
+        });
+        test(`substracCount should subtract value`, () => {
+            const state = {
+                currentSum: 0,
+                allClick: 3
+            };
+            const model = new Model(state);
+            model.substracCount = 1;
+            expect(model._state).toEqual({
+                currentSum: -1,
+                allClick: 4
+            });
+
+            model._state = state;
+            model.substracCount = 3;
+            expect(model._state).toEqual({
+                currentSum: -3,
+                allClick: 4
+            });
+        });
+        test(`getSumClick should return allClick`, () => {
+            const model = new Model({
+                currentSum: 2,
+                allClick: 4
+            });
+            const result = model.getSumClick;
+            expect(result).toBe(4);
+        });
+        test(`getCurrentSum should return currentSum`, () => {
+            const model = new Model({
+                currentSum: 2,
+                allClick: 4
+            });
+            const result = model.getCurrentSum;
+            expect(result).toBe(2);
         });
     });
 });

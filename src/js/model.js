@@ -15,10 +15,10 @@ export default class Model {
     }
 
     /**
-     * @param {Number} value - sum of a click
+     * Sum of a click
      */
-    set _addClick(value) {
-        this._state.allClick += value;
+    _addClick() {
+        this._state.allClick += 1;
     }
 
     /**
@@ -26,7 +26,7 @@ export default class Model {
      */
     set addCount(value) {
         this._state.currentSum += value;
-        this._addClick = value;
+        this._addClick();
     }
 
     /**
@@ -35,7 +35,7 @@ export default class Model {
      */
     set substracCount(value) {
         this._state.currentSum -= value;
-        this._addClick = value;
+        this._addClick();
     }
 
     /**
